@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasmin 💜</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
 
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+overflow:hidden;
+font-family:Poppins,sans-serif;
+background:linear-gradient(180deg,#16071f,#2f1152,#190722);
+height:100vh;
+}
+
+#particles{
+position:fixed;
+inset:0;
+z-index:1;
+pointer-events:none;
+}
+
+.particle{
+position:absolute;
+animation:fall linear infinite;
+opacity:.85;
+}
+
+@keyframes fall{
+from{transform:translateY(-10vh) rotate(0deg)}
+to{transform:translateY(110vh) rotate(360deg)}
+}
+
+.center{
+position:relative;
+z-index:10;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+#envelope{
+width:340px;
+height:230px;
+background:linear-gradient(135deg,#6d28d9,#9333ea);
+border-radius:16px;
+cursor:pointer;
+position:relative;
+box-shadow:0 0 40px rgba(192,132,252,.7);
+transition:.4s;
+}
+
+#envelope:hover{
+transform:scale(1.03);
+}
+
+#envelope:before{
+content:'';
+position:absolute;
+left:0;right:0;top:0;margin:auto;
+border-left:170px solid transparent;
+border-right:170px solid transparent;
+border-top:115px solid #a855f7;
+}
+
+.seal{
+position:absolute;
+left:50%;
+top:56%;
+transform:translate(-50%,-50%);
+font-size:65px;
+}
+
+.hint{
+margin-top:18px;
+text-align:center;
+color:#f3e8ff;
+font-size:1rem;
+}
+
+#scroll{
+display:none;
+position:relative;
+z-index:20;
+width:min(900px,92vw);
+max-height:85vh;
+overflow:auto;
+padding:40px;
+border-radius:24px;
+background:linear-gradient(#f6e6c4,#ead7b0);
+color:#47265f;
+box-shadow:0 0 50px rgba(255,255,255,.25);
+animation:openScroll .9s ease;
+}
+
+@keyframes openScroll{
+from{opacity:0;transform:scaleY(.05)}
+to{opacity:1;transform:scaleY(1)}
+}
+
+h1{
+font-family:Cinzel,serif;
+text-align:center;
+color:#5b21b6;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+margin-bottom:25px;
+color:#7c3aed;
+}
+
+p{
+line-height:1.9;
+margin-bottom:18px;
+}
+
+.badge{
+text-align:center;
+font-size:28px;
+margin-bottom:15px;
+}
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="center">
+
+<div id="cover">
+<div id="envelope" onclick="openLetter()">
+<div class="seal">💜</div>
+</div>
+<div class="hint">✨ Toca el sobre para abrir tu mensaje ✨</div>
+</div>
+
+<div id="scroll">
+<div class="badge">💜 ✨ 15 AÑOS ✨ 💜</div>
+<h1>Feliz Cumple, Min</h1>
+<div class="subtitle">La protagonista de su propia historia 💜</div>
+
+<p>🥳💜 Ya 15 años, es un montón jajajajaja. Espero que la pases súper bien hoy, que te llenen de regalos, comida y que disfrutes mucho tu día 🫡🫧</p>
+
+<p>Aunque estemos lejos ahora y ya no compartamos tantas cosas como antes, siempre me alegra saber cómo vas creciendo y haciendo tu vida. Disfruta mucho la secundaria, es verdad cuando dicen que pasa volando, haz buen@s amig@s, vive cosas lindas y, por favor, compórtate 🤨 jaksjsjajaj.</p>
+
+<p>😂✨ También te dejo la responsabilidad de seguir viendo buenos doramas porque te heredé gustos de calidad (ponele 😂) Y recuerda: puedes mirar Teen Wolf, Riverdale y todos los dramas que quieras, pero no copies las decisiones que toman los personajes porque la mitad son un desastre 🤣.</p>
+
+<p>🎀🎂 Te quiero mucho y te deseo un año lleno de cosas bonitas. Disfruta tus 15, que solo se cumplen una vez.</p>
+
+<div class="subtitle"><strong> 💕📱 Psdt:</strong> Sabes que puedes contar conmigo para lo que quieras, ¿no? Solo estoy a un mensaje o llamada de distancia.</div>
+
+</div>
+
+<script>
+const icons=["💜","🌸","✨","🦋","⭐"];
+const layer=document.getElementById("particles");
+
+for(let i=0;i<140;i++){
+ let p=document.createElement("div");
+ p.className="particle";
+ p.textContent=icons[Math.floor(Math.random()*icons.length)];
+ p.style.left=Math.random()*100+"vw";
+ p.style.fontSize=(14+Math.random()*26)+"px";
+ p.style.animationDuration=(8+Math.random()*14)+"s";
+ p.style.animationDelay=(-Math.random()*20)+"s";
+ layer.appendChild(p);
+}
+
+function openLetter(){
+ document.getElementById("cover").style.display="none";
+ document.getElementById("scroll").style.display="block";
+}
+</script>
+
+</body>
+</html>
